@@ -125,6 +125,10 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
 .area-card p{font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.6;color:#d3c9c0;flex:1}
 .area-link{display:inline-block;margin-top:16px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#f4ead8;border-bottom:1px solid rgba(226,188,130,.6);padding-bottom:3px;align-self:flex-start;transition:color .2s,border-color .2s}
 .area-link:hover{color:#e6c48c;border-color:#e6c48c}
+.area-card{position:relative;cursor:pointer}
+.area-link::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:8px;z-index:1}
+.area-card:hover .area-link{color:#e6c48c;border-color:#e6c48c}
+.area-card:focus-within{border-color:rgba(226,188,130,.85)}
 .areas-cta{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:clamp(34px,5vw,64px);gap:16px}
 .areas-cta p{font-size:clamp(17px,2vw,24px);color:#f4eeea;font-style:italic}
 .areas-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;border-radius:9px;border:1.3px solid rgba(228,132,116,.78);color:#fff5f2;
