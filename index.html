@@ -109,6 +109,11 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* ---------- Áreas de atuação (abaixo da composição principal) ---------- */
+/* fechada por padrão; abre ao clicar em qualquer link para #areas */
+.areas{display:none}
+.areas.open{display:block;animation:areasIn .5s ease both}
+@keyframes areasIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.areas.open{animation:none}}
 .areas{position:relative;background:radial-gradient(120% 90% at 0% 0%,rgba(120,12,26,.38),rgba(5,3,3,0) 55%),radial-gradient(90% 80% at 100% 100%,rgba(90,10,20,.30),rgba(5,3,3,0) 60%),#050303;
   border-top:1px solid rgba(201,155,92,.55);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px) clamp(36px,5vw,64px)}
 .areas-in{max-width:1180px;margin:0 auto}
@@ -348,6 +353,22 @@ const WHATSAPP_MESSAGE = "Olá! Vim pelo site e gostaria de falar com o escritó
     a.target = "_blank";
     a.rel = "noopener noreferrer";
   });
+  var areasEl = document.getElementById("areas");
+  function abrirAreas(rolar) {
+    if (!areasEl) return;
+    areasEl.classList.add("open");
+    if (rolar) {
+      setTimeout(function () { areasEl.scrollIntoView({ behavior: "smooth", block: "start" }); }, 30);
+    }
+  }
+  document.querySelectorAll('a[href="#areas"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      abrirAreas(true);
+      if (history.replaceState) history.replaceState(null, "", "#areas");
+    });
+  });
+  if (location.hash === "#areas") abrirAreas(true);
   document.querySelectorAll("[data-area]").forEach(function (a) {
     var msg = "Olá! Vim pelo site e gostaria de falar com o escritório sobre: " + a.getAttribute("data-area") + ".";
     a.href = "https://wa.me/" + digits + "?text=" + encodeURIComponent(msg);
