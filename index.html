@@ -136,6 +136,31 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
 .areas-foot b{font-weight:400;color:#cbab7c}
 @media (max-width:900px){.areas-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.areas-grid{grid-template-columns:1fr}}
+
+/* ---------- Sobre / Depoimentos / rodapé ---------- */
+.sobre{background:#050303;border-top:1px solid rgba(201,155,92,.25);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px)}
+.sobre-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:clamp(24px,5vw,72px);align-items:center}
+.sobre-foto{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/5;border:1px solid rgba(201,155,92,.55);box-shadow:0 0 40px rgba(120,12,26,.35)}
+.sobre-foto img{display:block;width:100%;height:100%;object-fit:cover;object-position:100% 30%}
+.sobre h2,.depo h2{font-weight:400;font-size:clamp(28px,4vw,48px);line-height:1.12;color:#fefaf6;margin:14px 0 18px}
+.sobre h2 em,.depo h2 em{font-style:italic;color:#e2bc82}
+.sobre p.tx{font-size:clamp(15.5px,1.55vw,18.5px);line-height:1.7;color:#d9cfc6;margin-bottom:14px}
+.pilares{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;margin:26px 0 8px;list-style:none}
+.pilares li{display:flex;align-items:center;gap:14px;font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.35;color:#f0e6da}
+.pilares svg{flex:none;width:34px;height:34px}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);max-width:1180px;margin:clamp(34px,5vw,64px) auto 0;list-style:none;counter-reset:p}
+.passos li{position:relative;padding:22px 22px 20px;border-top:1px solid rgba(201,155,92,.55);background:linear-gradient(180deg,rgba(201,155,92,.07),rgba(255,255,255,0))}
+.passos li::before{counter-increment:p;content:"0" counter(p);display:block;font-size:13px;letter-spacing:.2em;color:#a8834f;margin-bottom:8px}
+.passos b{display:block;font-weight:400;font-size:clamp(16px,1.6vw,19px);letter-spacing:.16em;text-transform:uppercase;color:#e2bc82;margin-bottom:8px}
+.passos span{font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.6;color:#d3c9c0}
+.depo{background:radial-gradient(90% 100% at 50% 0%,rgba(120,12,26,.28),rgba(5,3,3,0) 65%),#050303;border-top:1px solid rgba(201,155,92,.25);padding:clamp(44px,7vw,96px) clamp(18px,5vw,72px);text-align:center}
+.depo-in{max-width:760px;margin:0 auto}
+.depo .q{font-size:clamp(46px,7vw,84px);line-height:.6;color:#c99b5c;font-style:italic;height:.5em}
+.depo p{font-size:clamp(15.5px,1.6vw,19px);line-height:1.7;color:#d9cfc6;margin-bottom:12px}
+.site-foot{border-top:1px solid rgba(201,155,92,.55);background:#030202;padding:26px clamp(18px,5vw,72px) 34px;text-align:center;font-size:13px;letter-spacing:.14em;color:#a89a8c;line-height:1.9}
+.site-foot b{font-weight:400;color:#cbab7c}
+@media (max-width:800px){.sobre-grid{grid-template-columns:1fr}.sobre-foto{max-width:420px;margin:0 auto;width:100%}.passos{grid-template-columns:1fr}}
+@media (max-width:420px){.pilares{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -143,7 +168,7 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
 <div class="canvas" id="inicio">
 
   <!-- Foto à direita (moldura dourada incluída) -->
-  <section class="photo" id="sobre" aria-label="Suzanne Figueiredo">
+  <section class="photo" id="foto" aria-label="Suzanne Figueiredo">
     <img src="/hero-photo.jpg" alt="Dra. Suzanne Figueiredo em seu escritório" width="1692" height="1574" decoding="async" fetchpriority="high" draggable="false">
   </section>
 
@@ -220,7 +245,6 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
   <span class="motto-line" aria-hidden="true"></span>
   <div class="motto"><span>SEMPRE AO SEU LADO</span><br><span class="m2">NAS DECISÕES QUE IMPORTAM.</span></div>
 
-  <span class="anchor" id="depoimentos" style="left:0;top:60.8724vw;top:60.8724cqw"></span>
   <span class="anchor" id="contato" style="left:0;top:66.4062vw;top:66.4062cqw"></span>
 </div>
 </main>
@@ -245,9 +269,47 @@ a:focus-visible{outline:2px solid #e6c48c;outline-offset:3px}
       <p>Não encontrou o seu caso? Conte-me sua situação.</p>
       <a class="areas-btn" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Falar com o escritório</a>
     </div>
-    <div class="areas-foot"><b>SUZANNE FIGUEIREDO</b> · Advocacia e Soluções Jurídicas<br>OAB/MG 131.880 · (31) 99298-4141 · eulampiosuzanne@gmail.com</div>
   </div>
 </section>
+
+<section class="sobre" id="sobre" aria-labelledby="sobre-t">
+  <div class="sobre-grid">
+    <div class="sobre-foto"><img src="/hero-photo.jpg" alt="Dra. Suzanne Figueiredo, advogada" width="1692" height="1574" loading="lazy" decoding="async"></div>
+    <div>
+      <div class="areas-eyebrow">Sobre</div>
+      <h2 id="sobre-t">Suzanne Figueiredo, <em>advogada</em></h2>
+      <p class="tx">Sou advogada inscrita na OAB/MG sob o nº 131.880 e atuo com um atendimento próximo, sigiloso e orientado por estratégia. Cada caso é analisado com cuidado, e cada etapa é explicada com clareza, para que você tome suas decisões com segurança.</p>
+      <p class="tx">Meu compromisso é acompanhar você do primeiro contato até a solução, com transparência sobre o caminho jurídico possível e sem promessas de resultado. Mais que direito, soluções para a sua vida.</p>
+      <ul class="pilares">
+        <li><svg viewBox="0 0 30 36.5" aria-hidden="true"><use href="#i-shield"/></svg>Atendimento personalizado</li>
+        <li><svg viewBox="0 0 34 27" aria-hidden="true"><use href="#i-people"/></svg>Sigilo e confiança</li>
+        <li><svg viewBox="0 0 34 29.5" aria-hidden="true"><use href="#i-bars"/></svg>Estratégia em cada etapa</li>
+        <li><svg viewBox="0 0 27 36.5" aria-hidden="true"><use href="#i-pin"/></svg>Atuação em todo o Estado de MG</li>
+      </ul>
+    </div>
+  </div>
+  <ol class="passos" aria-label="Como funciona o atendimento">
+    <li><b>Primeiro contato</b><span>Você me chama pelo WhatsApp e conta, com suas palavras, o que está acontecendo.</span></li>
+    <li><b>Análise do caso</b><span>Avalio a sua situação com cuidado e explico, de forma clara, quais são os caminhos possíveis.</span></li>
+    <li><b>Estratégia e acompanhamento</b><span>Definimos juntos o melhor caminho e você acompanha cada etapa de perto.</span></li>
+  </ol>
+</section>
+
+<section class="depo" id="depoimentos" aria-labelledby="depo-t">
+  <div class="depo-in">
+    <div class="areas-eyebrow">Depoimentos</div>
+    <h2 id="depo-t">Confiança que se <em>constrói</em></h2>
+    <p>Os relatos de quem já foi atendido serão publicados aqui, sempre com autorização e respeitando o sigilo profissional e as normas da OAB.</p>
+    <p>Enquanto isso, conte-me a sua situação: será um prazer atender você.</p>
+    <div class="areas-cta" style="margin-top:26px">
+      <a class="areas-btn" href="#contato" data-whatsapp aria-label="Falar com o escritório pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>Falar com o escritório</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot" id="rodape">
+    <div><b>SUZANNE FIGUEIREDO</b> · Advocacia e Soluções Jurídicas<br>OAB/MG 131.880 · (31) 99298-4141 · eulampiosuzanne@gmail.com</div>
+</footer>
 
 <!-- Ícones -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
